@@ -1,6 +1,6 @@
 # Pillod - Python Utility Library
 
-A comprehensive Python utility library providing 9 powerful modules with 100+ functions for common programming tasks.
+A comprehensive Python utility library providing 17 powerful modules with 200+ functions for common programming tasks.
 
 ## Table of Contents
 
@@ -67,6 +67,14 @@ config = pillod.configtools.load_json_config("config.json")
 | **randomtools** | Random generation | 15 functions for random numbers, strings, passwords, colors, dates, etc. |
 | **filetools** | File operations | 13 functions for reading, writing, copying, deleting files, etc. |
 | **configtools** | Configuration tools | 6 functions for loading/saving JSON, key-value configs, etc. |
+| **dicttools** | Dictionary operations | 15 functions for merging, filtering, flattening, nested access, etc. |
+| **hashtools** | Hashing and checksums | 8 functions for MD5, SHA256, file hashing, password hashing, etc. |
+| **jsontools** | JSON utilities | 11 functions for formatting, validation, file operations, etc. |
+| **pathtools** | Path operations | 17 functions for cross-platform path handling, extensions, etc. |
+| **regextools** | Regex helpers | 19 functions for pattern matching, extraction, replacement, etc. |
+| **colortools** | Color utilities | 10 functions for hex/RGB conversion, brightness, complementary colors, etc. |
+| **sorttools** | Advanced sorting | 11 functions for custom sorting, natural sort, multi-key sort, etc. |
+| **encryptiontools** | Encryption utilities | 12 functions for base64, ciphers, password hashing, etc. |
 
 ---
 
@@ -328,6 +336,170 @@ pillod.configtools.save_key_value_config("config.ini", {"host": "localhost", "po
 exists = pillod.configtools.config_exists("config.json")
 ```
 
+### dicttools
+
+**Purpose**: Dictionary manipulation and transformations
+
+```python
+# Merge dictionaries
+pillod.dicttools.merge_dicts({'a': 1}, {'b': 2})                      # {'a': 1, 'b': 2}
+
+# Filter dictionary
+pillod.dicttools.filter_dict({'a': 1, 'b': 2, 'c': 3}, ['a', 'c'])   # {'a': 1, 'c': 3}
+
+# Invert dictionary
+pillod.dicttools.invert_dict({'a': 1, 'b': 2})                        # {1: 'a', 2: 'b'}
+
+# Flatten nested dictionary
+pillod.dicttools.flatten_dict({'a': {'b': {'c': 1}}})                # {'a_b_c': 1}
+
+# Access nested values
+pillod.dicttools.get_nested({'a': {'b': 1}}, ['a', 'b'])              # 1
+
+# Set nested values
+pillod.dicttools.set_nested({}, ['a', 'b'], 1)                        # {'a': {'b': 1}}
+
+# Remove None values
+pillod.dicttools.remove_none_values({'a': 1, 'b': None})              # {'a': 1}
+```
+
+### hashtools
+
+**Purpose**: Cryptographic hashing and checksums
+
+```python
+# Hash strings
+pillod.hashtools.md5_hash("hello")                                    # "5d41402abc4b2a76b9719d911017c592"
+pillod.hashtools.sha256_hash("hello")                                 # "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
+
+# Hash files
+pillod.hashtools.file_sha256("document.pdf")                           # "abc123..."
+
+# Verify files match expected hash
+pillod.hashtools.verify_file_hash("file.zip", "abc123...", 'sha256')  # True/False
+
+# Password hashing
+pillod.hashtools.hash_password("mypassword", 'sha256')                # Hashed password
+```
+
+### jsontools
+
+**Purpose**: JSON parsing and formatting utilities
+
+```python
+# Pretty print JSON
+json_str = '{"name":"John","age":30}'
+pillod.jsontools.pretty_print_json(json_str)                          # Formatted with indentation
+
+# Minify JSON
+pillod.jsontools.minify_json(json_str)                                # Compact format
+
+# Validate JSON
+pillod.jsontools.validate_json(json_str)                              # True/False
+
+# Convert between JSON and dict
+pillod.jsontools.json_to_dict(json_str)                               # {'name': 'John', 'age': 30}
+pillod.jsontools.dict_to_json({'name': 'John'})                       # '{"name": "John"}'
+
+# Work with JSON files
+pillod.jsontools.json_to_file({'key': 'value'}, "config.json")
+pillod.jsontools.json_from_file("config.json")                        # Returns dict
+```
+
+### pathtools
+
+**Purpose**: Cross-platform path operations
+
+```python
+# Path joining (cross-platform)
+pillod.pathtools.join_path("home", "user", "file.txt")                # "home/user/file.txt" or "home\\user\\file.txt"
+
+# Path operations
+pillod.pathtools.normalize_path("../folder/./file.txt")               # "folder/file.txt"
+pillod.pathtools.get_filename("/path/to/file.txt")                    # "file.txt"
+pillod.pathtools.get_extension("/path/to/file.txt")                   # ".txt"
+pillod.pathtools.get_directory("/path/to/file.txt")                   # "/path/to"
+
+# Absolute/relative paths
+pillod.pathtools.resolve_path("./file.txt")                           # "/current/dir/file.txt"
+pillod.pathtools.get_relative_path("/home/user/file", "/home")        # "user/file"
+
+# Path checks
+pillod.pathtools.path_exists("file.txt")                              # True/False
+pillod.pathtools.is_file("file.txt")                                  # True/False
+pillo50+ utility functions**  
+✅ **17 comprehensive modules**  
+✅ **Multi-country support (validators)
+
+**Purpose**: Regular expression helpers
+
+```python
+# Find matches
+pillod.regextools.find_all_matches(r'\d+', "a1b2c3")                 # ['1', '2', '3']
+pillod.regextools.find_first_match(r'\d+', "a1b2c3")                 # '1'
+
+# Replace patterns
+pillod.regextools.replace_pattern(r'\d+', 'X', "a1b2c3")             # "aXbXcX"
+
+# Validate and check
+pillod.regextools.validate_pattern(r'^\d{3}$', "123")                 # True
+pillod.regextools.contains_pattern(r'@', "user@example.com")          # True
+
+# Extract groups
+pillod.regextools.extract_groups(r'(\w+)@(\w+)', "user@example")      # ('user', 'example')
+
+# Special finders
+pillod.regextools.find_emails("Contact me@example.com or user@test.org") # ['me@example.com', 'user@test.org']
+pillod.regextools.find_urls("Visit https://github.com for code")      # ['https://github.com']
+```
+
+### colortools
+
+**Purpose**: Color conversion and manipulation
+
+```python
+# Color conversions
+pillod.colortools.hex_to_rgb("#FF5733")                               # (255, 87, 51)
+pillod.colortools.rgb_to_hex(255, 87, 51)                             # "#FF5733"
+
+# Color operations
+pillod.colortools.lighten_color("#FF5733", 0.2)                       # Lighter version
+pillod.colortools.darken_color("#FF5733", 0.2)                        # Darker version
+pillod.colortools.complementary_color("#FF5733")                      # "#00A8CC" (opposite)
+
+# Color checks
+pillod.colortools.is_valid_color("#FF5733")                           # True
+pillod.colortools.is_light_color("#FFFFFF")                           # True
+pillod.colortools.is_dark_color("#000000")                            # True
+
+# Random colors
+pillod.colortools.random_color()                                      # "#A1B2C3"
+pillod.colortools.color_name_to_hex("red")                            # "#FF0000"
+```
+
+### sorttools
+
+**Purpose**: Advanced sorting operations
+
+```python
+# Basic sorting
+pillod.sorttools.sort_ascending([3, 1, 2])                            # [1, 2, 3]
+pillod.sorttools.sort_descending([3, 1, 2])                           # [3, 2, 1]
+
+# Custom sorting
+pillod.sorttools.sort_by_key([1, 2, 3], lambda x: -x)                 # [3, 2, 1]
+pillod.sorttools.natural_sort(['item1', 'item10', 'item2'])           # ['item1', 'item2', 'item10']
+pillod.sorttools.custom_sort(['a', 'b', 'c'], ['c', 'b', 'a'])       # ['c', 'b', 'a']
+
+# Dictionary sorting
+pillod.sorttools.sort_dict_by_keys({'c': 1, 'a': 2})                  # {'a': 2, 'c': 1}
+pillod.sorttools.sort_dict_by_values({'a': 2, 'b': 1})                # {'b': 1, 'a': 2}
+
+# Special sorts
+pillod.sorttools.sort_by_length(['a', 'aaa', 'aa'])                   # ['a', 'aa', 'aaa']
+pillod.sorttools.case_insensitive_sort(['Apple', 'apple', 'APPLE'])  # ['Apple', 'apple', 'APPLE']
+```
+
 ---
 
 ## Examples
@@ -419,8 +591,8 @@ print(f"Running {loaded['app_name']} v{loaded['version']} on port {loaded['port'
 
 ## Features
 
-✅ **100+ utility functions**  
-✅ **9 comprehensive modules**  
+✅ **200+ utility functions**  
+✅ **17 comprehensive modules**  
 ✅ **Data validation for multiple countries**  
 ✅ **Easy-to-use API**  
 ✅ **No external dependencies** (except standard library)  
