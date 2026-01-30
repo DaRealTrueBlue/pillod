@@ -15,11 +15,12 @@ from . import regextools
 from . import colortools
 from . import sorttools
 from . import encryptiontools
+from . import consoletools
 
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 __all__ = [
     'parsertools', 'configtools', 'filetools', 'stringtools',
     'mathtools', 'listtools', 'validators', 'datetools', 'randomtools',
     'dicttools', 'hashtools', 'jsontools', 'pathtools', 'regextools',
-    'colortools', 'sorttools', 'encryptiontools'
+    'colortools', 'sorttools', 'encryptiontools', 'consoletools'
 ]
