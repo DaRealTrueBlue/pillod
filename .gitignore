@@ -62,5 +62,6 @@ env/
 # Project specific
 .env
 local_settings.py
-
+setup.py
 PUBLISHING_GUIDE.md
+.pypirc
